@@ -17,4 +17,4 @@ jobs:
         password: ${{ secrets.sonatype_password }}
         applicationId: morphir-scala
         stage: build
-        target: '**/yarn.lock'
+        target: '**/yarn.lock **/package.json'
