@@ -1,0 +1,20 @@
+name: Maven CI with Nexus IQ
+
+on: workflow_dispatch
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Nexus IQ Policy Evaluation
+      uses: sonatype-nexus-community/iq-github-action@master
+      with:
+        serverUrl: ${{ secrets.sonatype-url }} 
+        username: ${{ secrets.sonatype-user }}
+        password: ${{ secrets.sonatype-password }}
+        applicationId: morphir-scala
+        stage: 'build -X -D dirExcludes=“**/.yarn”'
+        target: '**/yarn.lock'
