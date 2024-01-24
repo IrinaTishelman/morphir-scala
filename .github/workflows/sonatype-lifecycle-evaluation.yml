@@ -1,4 +1,4 @@
-name: Maven CI with Nexus IQ
+name: Sonatype Lifecycle Evaluation
 
 on: workflow_dispatch
 
