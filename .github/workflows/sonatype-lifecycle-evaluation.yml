@@ -16,5 +16,5 @@ jobs:
         username: ${{ secrets.sonatype_user }}
         password: ${{ secrets.sonatype_password }}
         applicationId: morphir-scala
-        stage: 'build -X -D dirExcludes=“**/.yarn”'
+        stage: build
         target: '**/yarn.lock'
