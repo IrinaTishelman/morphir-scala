@@ -12,9 +12,9 @@ jobs:
     - name: Nexus IQ Policy Evaluation
       uses: sonatype-nexus-community/iq-github-action@master
       with:
-        serverUrl: ${{ secrets.sonatype-url }} 
-        username: ${{ secrets.sonatype-user }}
-        password: ${{ secrets.sonatype-password }}
+        serverUrl: ${{ secrets.sonatype_url }} 
+        username: ${{ secrets.sonatype_user }}
+        password: ${{ secrets.sonatype_password }}
         applicationId: morphir-scala
         stage: 'build -X -D dirExcludes=“**/.yarn”'
         target: '**/yarn.lock'
