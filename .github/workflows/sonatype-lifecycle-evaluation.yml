@@ -12,7 +12,7 @@ jobs:
     - name: Nexus IQ Policy Evaluation
       uses: sonatype-nexus-community/iq-github-action@master
       with:
-        serverUrl: ${{ secrets.sonatype_url }} 
+        serverUrl: "https://finos.sonatype.app/platform"
         username: ${{ secrets.sonatype_user }}
         password: ${{ secrets.sonatype_password }}
         applicationId: morphir-scala
