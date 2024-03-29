@@ -11,10 +11,18 @@ jobs:
       SonatypeUrl: 'https://finos.sonatype.app/platform -X'
       SonatypeAppId: 'morphir-scala'
       SonatypeStage: 'build'
-      SonatypeScanTarget: '**/yarn.lock **/package.json -D dirExcludes="**/website, **/.*"'
+      SonatypeScanTarget: '**/yarn.lock **/package.json '
+      ExcludeDirectory: '-D dirExcludes="**/website, **/.*"'
       
     steps:
     - uses: actions/checkout@v1
+
+    - name: TESTING (TEMP)
+      run: |
+        echo PATH
+        echo ls
+        ls -al
+        ls -al website/
     
     - name: Sonatype Lifecycle Software Composition Analysis (SCA) Scan
       uses: sonatype-nexus-community/iq-github-action@master
@@ -27,15 +35,15 @@ jobs:
         target: ${{ env.SonatypeScanTarget }}
 
 
-    - name: Retrieve Sonatype SBOM
-      run: |
-        iqCredentials=${{ secrets.sonatype_user }}:${{ secrets.sonatype_password }}
-        echo 'Get internal app ID for '$SonatypeAppId
-        res=$(curl -u $iqCredentials --location $SonatypeUrl'/api/v2/applications?publicId='$SonatypeAppId)
-        IFS='"' read -a array <<< "$res"
-        echo 'Internal app ID: '${array[5]}
-        internalID=${array[5]}
-        curl -u $iqCredentials --location $SonatypeUrl'/api/v2/cycloneDx/1.5/'$internalID'/stages/'$SonatypeStage -H 'Accept: application/xml' > Sonatype-SBOM.xml
-        echo 'Sonatype SBOM: '
-        cat Sonatype-SBOM.xml
+    # - name: Retrieve Sonatype SBOM
+    #   run: |
+    #     iqCredentials=${{ secrets.sonatype_user }}:${{ secrets.sonatype_password }}
+    #     echo 'Get internal app ID for '$SonatypeAppId
+    #     res=$(curl -u $iqCredentials --location $SonatypeUrl'/api/v2/applications?publicId='$SonatypeAppId)
+    #     IFS='"' read -a array <<< "$res"
+    #     echo 'Internal app ID: '${array[5]}
+    #     internalID=${array[5]}
+    #     curl -u $iqCredentials --location $SonatypeUrl'/api/v2/cycloneDx/1.5/'$internalID'/stages/'$SonatypeStage -H 'Accept: application/xml' > Sonatype-SBOM.xml
+    #     echo 'Sonatype SBOM: '
+    #     cat Sonatype-SBOM.xml
 
