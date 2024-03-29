@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SonatypeUrl: 'https://finos.sonatype.app/platform -X'
+      SonatypeUrl: "https://finos.sonatype.app/platform -D dirExcludes='**/website, **/.*'"
       SonatypeAppId: 'morphir-scala'
       SonatypeStage: 'build'
       SonatypeScanTarget: '*'
@@ -19,10 +19,8 @@ jobs:
 
     - name: TESTING (TEMP)
       run: |
-        echo PATH
-        echo ls
         ls -al
-        ls -al website/
+        pwd
     
     - name: Sonatype Lifecycle Software Composition Analysis (SCA) Scan
       uses: sonatype-nexus-community/iq-github-action@master
