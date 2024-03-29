@@ -24,7 +24,7 @@ jobs:
         username: ${{ secrets.sonatype_user }}
         password: ${{ secrets.sonatype_password }}
         applicationId: $env.SonatypeAppId
-        stage: $env.SonatypeStage
+        stage: Build
         target: $env.SonatypeScanTarget
 
 
