@@ -25,7 +25,7 @@ jobs:
         password: ${{ secrets.sonatype_password }}
         applicationId: $SonatypeAppId
         stage: Build
-        target: ${{ SonatypeScanTarget }}
+        target: ${{ env.SonatypeScanTarget }}
 
 
     - name: Retrieve Sonatype SBOM
