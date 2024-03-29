@@ -20,12 +20,12 @@ jobs:
     - name: Sonatype Lifecycle Software Composition Analysis (SCA) Scan
       uses: sonatype-nexus-community/iq-github-action@master
       with:
-        serverUrl: $env.SonatypeURL
+        serverUrl: ${{ env.SonatypeURL }}
         username: ${{ secrets.sonatype_user }}
         password: ${{ secrets.sonatype_password }}
-        applicationId: $env.SonatypeAppId
+        applicationId: $SonatypeAppId
         stage: Build
-        target: $env.SonatypeScanTarget
+        target: ${{ SonatypeScanTarget }}
 
 
     - name: Retrieve Sonatype SBOM
