@@ -10,7 +10,7 @@ jobs:
     env:
       SonatypeUrl: https://finos.sonatype.app/platform
       SonatypeAppId: morphir-scala
-      SonatypeStage: 'build'
+      SonatypeStage: Build
       SonatypeScanTarget: '**/yarn.lock **/package.json'
       
 
