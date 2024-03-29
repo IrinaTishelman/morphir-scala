@@ -11,7 +11,7 @@ jobs:
       SonatypeUrl: 'https://finos.sonatype.app/platform'
       SonatypeAppId: 'morphir-scala'
       SonatypeStage: 'build'
-      SonatypeScanTarget: '-D dirExcludes="**/website, **/.*" **/yarn.lock **/package.json'
+      SonatypeScanTarget: '**/yarn.lock **/package.json -D dirExcludes="**/website, **/.*"'
       
     steps:
     - uses: actions/checkout@v1
