@@ -7,14 +7,27 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      SonatypeUrl: https://finos.sonatype.app/platform
+      SonatypeAppId: morphir-scala
+      SonatypeStage: build
+      SonatypeScanTarget: '**/yarn.lock **/package.json'
+      
+
     steps:
     - uses: actions/checkout@v1
-    - name: Nexus IQ Policy Evaluation
+    
+    - name: Sonatype Lifecycle Software Composition Analysis (SCA) Scan
       uses: sonatype-nexus-community/iq-github-action@master
       with:
-        serverUrl: "https://finos.sonatype.app/platform"
+        serverUrl: $env:SonatypeURL
         username: ${{ secrets.sonatype_user }}
         password: ${{ secrets.sonatype_password }}
-        applicationId: morphir-scala
-        stage: build
-        target: '**/yarn.lock **/package.json'
+        applicationId: $env:SonatypeAppId
+        stage: $env:SonatypeStage
+        target: $env:SonatypeScanTarget
+
+
+    - name: Retrieve Sonatype SBOM
+      run: |
+         echo "TBD: Trigger API Call"
