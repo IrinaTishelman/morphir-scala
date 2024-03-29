@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SonatypeUrl: 'https://finos.sonatype.app/platform'
+      SonatypeUrl: 'https://finos.sonatype.app/platform -X -D dirExcludes="**/.*"'
       SonatypeAppId: 'morphir-scala'
       SonatypeStage: 'build'
-      SonatypeScanTarget: '-X -D dirExcludes="**/.*" *'
+      SonatypeScanTarget: '*'
       ExcludeDirectory: '-D dirExcludes="**/website, **/.*" **/package.json'
       
     steps:
