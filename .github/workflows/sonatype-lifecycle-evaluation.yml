@@ -30,6 +30,7 @@ jobs:
 
     - name: Retrieve Sonatype SBOM
       run: |
+        iqCredentials=${{ secrets.sonatype_user }}:${{ secrets.sonatype_password }}
         echo 'Get internal app ID for '$SonatypeAppId
         res=$(curl -u $iqCredentials --location $SonatypeUrl'/api/v2/applications?publicId='$SonatypeAppId)
         IFS='"' read -a array <<< "$res"
