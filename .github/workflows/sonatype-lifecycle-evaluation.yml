@@ -11,8 +11,8 @@ jobs:
       SonatypeUrl: 'https://finos.sonatype.app/platform'
       SonatypeAppId: 'morphir-scala'
       SonatypeStage: 'build'
-      SonatypeScanTarget: "* -D dirExcludes='**/website, **/.*'"
-      ExcludeDirectory: '-D dirExcludes="**/website, **/.*" **/package.json'
+      SonatypeScanTarget: "*"
+      ExcludeDirectory: " -D dirExcludes='**/website, **/.*'"
       
     steps:
     - uses: actions/checkout@v1
@@ -30,7 +30,7 @@ jobs:
         serverUrl: ${{ env.SonatypeUrl }}
         applicationId: ${{ env.SonatypeAppId }}
         stage: ${{ env.SonatypeStage }}
-        target: ${{ env.SonatypeScanTarget }}
+        target: ${{ env.SonatypeScanTarget }} ${{ env.ExcludeDirectory }}
 
 
     # - name: Retrieve Sonatype SBOM
