@@ -31,11 +31,11 @@ jobs:
     - name: Retrieve Sonatype SBOM
       run: |
         echo 'Get internal app ID for '$env.SonatypeAppId
-        res=$(curl -u $iqCredentials --location $url'api/v2/applications?publicId='$env.SonatypeAppId)
+        res=$(curl -u $iqCredentials --location $env.SonatypeUrl'/api/v2/applications?publicId='$env.SonatypeAppId)
         IFS='"' read -a array <<< "$res"
         echo 'Internal app ID: '${array[5]}
         internalID=${array[5]}
-        curl -u $iqCredentials --location $url'api/v2/cycloneDx/1.5/'$internalID'/stages/'$env.SonatypeStage -H 'Accept: application/xml' > Sonatype-SBOM.xml
+        curl -u $iqCredentials --location $env.SonatypeUrl'/api/v2/cycloneDx/1.5/'$internalID'/stages/'$env.SonatypeStage -H 'Accept: application/xml' > Sonatype-SBOM.xml
         echo 'Sonatype SBOM: '
         cat Sonatype-SBOM.xml
 
