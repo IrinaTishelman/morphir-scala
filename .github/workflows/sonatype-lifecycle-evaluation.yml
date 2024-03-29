@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SonatypeUrl: 'https://finos.sonatype.app/platform'
+      SonatypeUrl: 'https://finos.sonatype.app/platform" "-D dirExcludes="**/website, **/.*"'
       SonatypeAppId: 'morphir-scala'
       SonatypeStage: 'build'
-      SonatypeScanTarget: ' -D dirExcludes=`**/website, **/.*` *'
+      SonatypeScanTarget: '*'
       ExcludeDirectory: '-D dirExcludes="**/website, **/.*" **/package.json'
       
     steps:
@@ -19,7 +19,7 @@ jobs:
 
     - name: TESTING (TEMP)
       run: |
-        ls -al
+        ls
         pwd
     
     - name: Sonatype Lifecycle Software Composition Analysis (SCA) Scan
