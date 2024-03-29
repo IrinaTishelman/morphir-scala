@@ -8,10 +8,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      SonatypeUrl: 'https://finos.sonatype.app/platform -X'
+      SonatypeUrl: 'https://finos.sonatype.app/platform'
       SonatypeAppId: 'morphir-scala'
       SonatypeStage: 'build'
-      SonatypeScanTarget: 'yarn.lock website/yarn.lock'
+      SonatypeScanTarget: '-X -D dirExcludes="**/.*" *'
       ExcludeDirectory: '-D dirExcludes="**/website, **/.*" **/package.json'
       
     steps:
