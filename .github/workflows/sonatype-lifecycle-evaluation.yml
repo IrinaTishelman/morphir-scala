@@ -11,8 +11,8 @@ jobs:
       SonatypeUrl: 'https://finos.sonatype.app/platform'
       SonatypeAppId: 'morphir-scala'
       SonatypeStage: 'build'
-      SonatypeScanTarget: "*"
-      ExcludeDirectory: " -D dirExcludes='**/website, **/docs, **/.*'"
+      SonatypeScanTarget: "."
+      ExcludeDirectory: " -D dirExcludes='**/website/, **/docs/, **/.*'"
       
     steps:
     - uses: actions/checkout@v1
