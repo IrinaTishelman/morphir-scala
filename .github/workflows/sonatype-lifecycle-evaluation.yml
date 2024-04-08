@@ -27,16 +27,3 @@ jobs:
         stage: ${{ env.SonatypeStage }}
         target: ${{ env.SonatypeScanTarget }} ${{ env.ExcludeDirectory }}
 
-
-    # - name: Retrieve Sonatype SBOM
-    #   run: |
-    #     iqCredentials=${{ secrets.sonatype_user }}:${{ secrets.sonatype_password }}
-    #     echo 'Get internal app ID for '$SonatypeAppId
-    #     res=$(curl -u $iqCredentials --location $SonatypeUrl'/api/v2/applications?publicId='$SonatypeAppId)
-    #     IFS='"' read -a array <<< "$res"
-    #     echo 'Internal app ID: '${array[5]}
-    #     internalID=${array[5]}
-    #     curl -u $iqCredentials --location $SonatypeUrl'/api/v2/cycloneDx/1.5/'$internalID'/stages/'$SonatypeStage -H 'Accept: application/xml' > Sonatype-SBOM.xml
-    #     echo 'Sonatype SBOM: '
-    #     cat Sonatype-SBOM.xml
-
